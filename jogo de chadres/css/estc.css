@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6ecf0;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #1da1f2;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#menu {
+    margin: 10px 0;
+}
+
+#menu a, #menu button {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border: none;
+    background-color: #1991db;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#login-container h1 {
+    margin-bottom: 20px;
+}
+
+#login-form input, #register-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+#login-form button, #register-form button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#tweet-box {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#tweet-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px

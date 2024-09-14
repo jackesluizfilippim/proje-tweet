@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Twitter Clone</title>
+    <link rel="stylesheet" href="css/estc.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Login no Twitter Clone</h1>
+        <form id="login-form" onsubmit="login(event)">
+            <input type="text" id="username" placeholder="Nome de usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="login-error" style="color: red; display: none;">Usuário ou senha incorretos!</p>
+        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            let storedUser = JSON.parse(localStorage.getItem(username));
+            
+            if (storedUser && storedUser.password === password) {
+                localStorage.setItem('loggedInUser', username);
+                window.location.href = 'home.html'; // Redireciona para a página principal
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+

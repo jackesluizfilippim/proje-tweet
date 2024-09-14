@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Twitter Clone</title>
+    <link rel="stylesheet" href="css/estc.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Twitter Clone</h1>
+            <nav id="menu">
+                <a href="#" id="home-link">Home</a>
+                <a href="#" id="profile-link">Perfil</a>
+                <button onclick="logout()">Sair</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="profile-section" style="display: none;">
+                <h2>Perfil de <span id="profile-username"></span></h2>
+                <p>Aqui estão suas informações.</p>
+            </section>
+
+            <section id="feed-section">
+                <div id="tweet-box">
+                    <textarea id="tweet-input" placeholder="O que está acontecendo?"></textarea>
+                    <button id="tweet-btn" onclick="addTweet()">Tweetar</button>
+                </div>
+                <div id="feed">
+                    <!-- Tweets vão aparecer aqui -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        window.onload = function() {
+            let loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                window.location.href = 'index.html'; // Redireciona para a página de login
+            } else {
+                document.getElementById('profile-username').innerText = loggedInUser;
+            }
+        }
+
+        function addTweet() {
+            let tweetInput = document.getElementById('tweet-input');
+            let tweetContent = tweetInput.value.trim();
+
+            if (tweetContent !== '') {
+                let tweetContainer = document.createElement('div');
+                tweetContainer.className = 'tweet';
+                let tweetText = document.createElement('p');
+                tweetText.textContent = tweetContent;
+                tweetContainer.appendChild(tweetText);
+
+                let feed = document.getElementById('feed');
+                feed.insertBefore(tweetContainer, feed.firstChild);
+
+                tweetInput.value = '';
+            } else {
+                alert('Por favor, insira um conteúdo no tweet.');
+            }
+        }
+
+        document.getElementById('home-link').addEventListener('click', function() {
+            document.getElementById('feed-section').style.display = 'block';
+            document.getElementById('profile-section').style.display = 'none';
+        });
+
+        document.getElementById('profile-link').addEventListener('click', function() {
+            document.getElementById('feed-section').style.display = 'none';
+            document.getElementById('profile-section').style.display = 'block';
+        });
+
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'index.html'; // Volta para a página de login
+        }
+    </script>
+</body>
+</html>

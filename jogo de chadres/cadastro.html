@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Twitter Clone</title>
+    <link rel="stylesheet" href="css/estc.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Cadastro no Twitter Clone</h1>
+        <form id="register-form" onsubmit="register(event)">
+            <input type="text" id="username" placeholder="Nome de usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+            
+        </form>
+        <p id="register-error" style="color: red; display: none;">Usuário já existe!</p>
+        <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+    </div>
+
+    <script>
+        function register(event) {
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            if (localStorage.getItem(username)) {
+                document.getElementById('register-error').style.display = 'block';
+            } else {
+                let userData = {
+                    username: username,
+                    password: password
+                };
+                localStorage.setItem(username, JSON.stringify(userData));
+                localStorage.setItem('loggedInUser', username);
+                window.location.href = 'home.html'; // Redireciona para a página principal
+            }
+        }
+    </script>
+</body>
+</html>
